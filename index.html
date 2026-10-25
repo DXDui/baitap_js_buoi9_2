@@ -1,0 +1,460 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Tailwind -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <!-- Flowbite -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.css"
+      rel="stylesheet"
+    />
+
+    <title>Bài tập JS 2</title>
+  </head>
+  <body>
+    <div class="min-h-screen bg-gray-100 p-4 sm:p-8 dark:bg-gray-950">
+      <div class="mx-auto max-w-6xl">
+        <!-- Vertical Tabs -->
+        <div
+          class="overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm dark:border-gray-800 dark:bg-gray-900"
+        >
+          <div class="md:flex">
+            <!-- Sidebar -->
+            <aside
+              class="border-b border-gray-200 bg-gray-50 p-4 md:w-64 md:shrink-0 md:border-b-0 md:border-r md:border-gray-200 dark:border-gray-800 dark:bg-gray-900"
+            >
+              <ul
+                class="flex flex-col gap-2 text-sm font-medium"
+                id="vertical-tab"
+                data-tabs-toggle="#vertical-tab-content"
+                data-tabs-active-classes="text-blue-700 bg-blue-50 dark:bg-blue-500/10 dark:text-blue-400"
+                data-tabs-inactive-classes="text-gray-600 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-400 dark:hover:bg-gray-800 dark:hover:text-white"
+                role="tablist"
+              >
+                <!-- Bài 1 -->
+                <li role="presentation">
+                  <button
+                    id="bai1-tab"
+                    data-tabs-target="#bai1"
+                    type="button"
+                    role="tab"
+                    aria-controls="bai1"
+                    aria-selected="true"
+                    class="group inline-flex w-full items-center gap-3 rounded-xl bg-blue-50 px-4 py-3 text-left text-blue-700 transition-all duration-200 dark:bg-blue-500/10 dark:text-blue-400"
+                  >
+                    <span>Bài 1</span>
+                  </button>
+                </li>
+
+                <!-- Bài 2 -->
+                <li role="presentation">
+                  <button
+                    id="bai2-tab"
+                    data-tabs-target="#bai2"
+                    type="button"
+                    role="tab"
+                    aria-controls="bai2"
+                    aria-selected="false"
+                    class="group inline-flex w-full items-center gap-3 rounded-xl px-4 py-3 text-left text-gray-600 transition-all duration-200 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-400 dark:hover:bg-gray-800 dark:hover:text-white"
+                  >
+                    <span>Bài 2</span>
+                  </button>
+                </li>
+
+                <!-- Bài 3 -->
+                <li role="presentation">
+                  <button
+                    id="bai3-tab"
+                    data-tabs-target="#bai3"
+                    type="button"
+                    role="tab"
+                    aria-controls="bai3"
+                    aria-selected="false"
+                    class="group inline-flex w-full items-center gap-3 rounded-xl px-4 py-3 text-left text-gray-600 transition-all duration-200 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-400 dark:hover:bg-gray-800 dark:hover:text-white"
+                  >
+                    <span>Bài 3</span>
+                  </button>
+                </li>
+
+                <!-- Bài 4 -->
+                <li role="presentation">
+                  <button
+                    id="bai4-tab"
+                    data-tabs-target="#bai4"
+                    type="button"
+                    role="tab"
+                    aria-controls="bai4"
+                    aria-selected="false"
+                    class="group inline-flex w-full items-center gap-3 rounded-xl px-4 py-3 text-left text-gray-600 transition-all duration-200 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-400 dark:hover:bg-gray-800 dark:hover:text-white"
+                  >
+                    <span>Bài 4</span>
+                  </button>
+                </li>
+              </ul>
+            </aside>
+
+            <!-- Main content -->
+            <main class="min-w-0 flex-1 p-5 sm:p-8">
+              <div id="vertical-tab-content">
+                <!-- baiTuyenSinh -->
+                <section id="bai1" role="tabpanel">
+                  <div class="mb-6 flex items-start justify-between gap-4">
+                    <div>
+                      <h2
+                        class="mt-1 text-2xl font-bold tracking-tight text-red-500"
+                      >
+                        Bài: Quản lý tuyển sinh
+                      </h2>
+                      <p class="mt-2 text-sm text-gray-500 dark:text-gray-400">
+                        Nhập điểm chuẩn và điểm thi của 3 môn.<br />
+                        Chọn khu vực và đối tượng dự thi để tính điểm ưu
+                        tiên.<br />
+                        Điều kiện đậu: Tổng điểm lớn hơn hoặc bằng điểm chuẩn và
+                        không có môn nào đạt 0 điểm.
+                      </p>
+                    </div>
+                  </div>
+
+                  <div
+                    class="rounded-2xl border border-gray-200 bg-white p-5 sm:p-6 dark:border-gray-800 dark:bg-gray-950"
+                  >
+                    <div class="flex flex-wrap gap-4">
+                      <div>
+                        <span>Điểm chuẩn:</span>
+                        <input
+                          id="diemChuan"
+                          type="number"
+                          min="0"
+                          max="30"
+                          step="0.25"
+                          placeholder="Nhập điểm chuẩn"
+                          class="w-full rounded border p-2"
+                        />
+                      </div>
+
+                      <div>
+                        <span>Điểm môn 1:</span>
+                        <input
+                          id="diem1"
+                          type="number"
+                          min="0"
+                          max="10"
+                          step="0.25"
+                          placeholder="Điểm môn 1"
+                          class="w-full rounded border p-2"
+                        />
+                      </div>
+
+                      <div>
+                        <span>Điểm môn 2:</span>
+                        <input
+                          id="diem2"
+                          type="number"
+                          min="0"
+                          max="10"
+                          step="0.25"
+                          placeholder="Điểm môn 2"
+                          class="w-full rounded border p-2"
+                        />
+                      </div>
+
+                      <div>
+                        <span>Điểm môn 3:</span>
+                        <input
+                          id="diem3"
+                          type="number"
+                          min="0"
+                          max="10"
+                          step="0.25"
+                          placeholder="Điểm môn 3"
+                          class="w-full rounded border p-2"
+                        />
+                      </div>
+
+                      <div>
+                        <span>Khu vực:</span>
+                        <select id="khuVuc" class="w-full rounded border p-2">
+                          <option value="X">Không ưu tiên</option>
+                          <option value="A">Khu vực A</option>
+                          <option value="B">Khu vực B</option>
+                          <option value="C">Khu vực C</option>
+                        </select>
+                      </div>
+
+                      <div>
+                        <span>Đối tượng:</span>
+                        <select id="doiTuong" class="w-full rounded border p-2">
+                          <option value="0">Không ưu tiên</option>
+                          <option value="1">Đối tượng 1</option>
+                          <option value="2">Đối tượng 2</option>
+                          <option value="3">Đối tượng 3</option>
+                        </select>
+                      </div>
+                    </div>
+
+                    <div
+                      class="mt-6 flex flex-wrap items-center justify-between gap-4 border-t border-gray-100 pt-5 dark:border-gray-800"
+                    >
+                      <div>
+                        <span>Kết quả:</span>
+                        <p
+                          id="resultTuyenSinh"
+                          class="mt-2 rounded p-3 font-semibold"
+                        ></p>
+                      </div>
+
+                      <button
+                        type="button"
+                        id="btnTuyenSinh"
+                        class="rounded-xl bg-blue-600 px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-blue-700"
+                      >
+                        Xét tuyển
+                      </button>
+                    </div>
+                  </div>
+                </section>
+
+                <!-- bai2 -->
+                <section id="bai2" role="tabpanel">
+                  <div class="mb-6">
+                    <h2
+                      class="mt-1 text-2xl font-bold tracking-tight text-red-500"
+                    >
+                      Bài: Tính tiền điện
+                    </h2>
+                    <p class="mt-2 text-sm text-gray-500 dark:text-gray-400">
+                      Nhập tên khách hàng và số kWh điện tiêu thụ.<br />
+                      Tiền điện được tính theo bậc thang.
+                    </p>
+                  </div>
+
+                  <div
+                    class="rounded-2xl border border-gray-200 bg-white p-5 sm:p-6 dark:border-gray-800 dark:bg-gray-950"
+                  >
+                    <div class="flex flex-wrap gap-4">
+                      <div>
+                        <label for="tenKhachHang">Tên khách hàng:</label>
+                        <input
+                          id="tenKhachHang"
+                          type="text"
+                          placeholder="Nhập tên"
+                          class="w-full rounded border p-2"
+                        />
+                      </div>
+
+                      <div>
+                        <label for="soKw">Số kWh tiêu thụ:</label>
+                        <input
+                          id="soKw"
+                          type="number"
+                          min="0"
+                          placeholder="Nhập số kWh"
+                          class="w-full rounded border p-2"
+                        />
+                      </div>
+                    </div>
+
+                    <div
+                      class="mt-6 flex flex-wrap items-center justify-between gap-4 border-t border-gray-100 pt-5 dark:border-gray-800"
+                    >
+                      <div>
+                        <span>Kết quả:</span>
+                        <p
+                          id="resultTienDien"
+                          class="mt-2 rounded p-3 font-semibold"
+                        ></p>
+                      </div>
+
+                      <button
+                        type="button"
+                        id="btnTinhTienDien"
+                        class="rounded-xl bg-blue-600 px-5 py-2.5 text-sm font-semibold text-white hover:bg-blue-700"
+                      >
+                        Tính tiền điện
+                      </button>
+                    </div>
+                  </div>
+                </section>
+
+                <!-- bai3 -->
+                <section id="bai3" role="tabpanel">
+                  <div class="mb-6">
+                    <h2
+                      class="mt-1 text-2xl font-bold tracking-tight text-red-500"
+                    >
+                      Bài: Tính thuế thu nhập cá nhân
+                    </h2>
+                    <p class="mt-2 text-sm text-gray-500 dark:text-gray-400">
+                      Thu nhập chịu thuế = Tổng thu nhập năm - 4 triệu - Số
+                      người phụ thuộc × 1.6 triệu.<br />
+                      Nhập thông tin cá nhân để tính số thuế phải trả.
+                    </p>
+                  </div>
+
+                  <div
+                    class="rounded-2xl border border-gray-200 bg-white p-5 sm:p-6 dark:border-gray-800 dark:bg-gray-950"
+                  >
+                    <div class="flex flex-wrap gap-4">
+                      <div>
+                        <label for="hoTen">Họ tên:</label>
+                        <input
+                          id="hoTen"
+                          type="text"
+                          placeholder="Nhập họ tên"
+                          class="w-full rounded border p-2"
+                        />
+                      </div>
+
+                      <div>
+                        <label for="thuNhapNam"
+                          >Tổng thu nhập năm (triệu):</label
+                        >
+                        <input
+                          id="thuNhapNam"
+                          type="number"
+                          min="0"
+                          placeholder="Nhập thu nhập"
+                          class="w-full rounded border p-2"
+                        />
+                      </div>
+
+                      <div>
+                        <label for="soNguoiPhuThuoc">Số người phụ thuộc:</label>
+                        <input
+                          id="soNguoiPhuThuoc"
+                          type="number"
+                          min="0"
+                          step="1"
+                          placeholder="Nhập số người"
+                          class="w-full rounded border p-2"
+                        />
+                      </div>
+                    </div>
+
+                    <div
+                      class="mt-6 flex flex-wrap items-center justify-between gap-4 border-t border-gray-100 pt-5 dark:border-gray-800"
+                    >
+                      <div>
+                        <span>Kết quả:</span>
+                        <p
+                          id="resultThueTNCN"
+                          class="mt-2 rounded p-3 font-semibold"
+                        ></p>
+                      </div>
+
+                      <button
+                        type="button"
+                        id="btnTinhThueTNCN"
+                        class="rounded-xl bg-blue-600 px-5 py-2.5 text-sm font-semibold text-white hover:bg-blue-700"
+                      >
+                        Tính thuế
+                      </button>
+                    </div>
+                  </div>
+                </section>
+
+                <!-- bai4 -->
+                <section id="bai4" role="tabpanel">
+                  <div class="mb-6">
+                    <h2
+                      class="mt-1 text-2xl font-bold tracking-tight text-red-500"
+                    >
+                      Bài: Tính tiền cáp
+                    </h2>
+                    <p class="mt-2 text-sm text-gray-500 dark:text-gray-400">
+                      Nhập mã khách hàng, loại khách hàng, số kết nối và số kênh
+                      cao cấp.
+                    </p>
+                  </div>
+
+                  <div
+                    class="rounded-2xl border border-gray-200 bg-white p-5 sm:p-6 dark:border-gray-800 dark:bg-gray-950"
+                  >
+                    <div class="flex flex-wrap gap-4">
+                      <div>
+                        <label for="maKhachHang">Mã khách hàng:</label>
+                        <input
+                          id="maKhachHang"
+                          type="text"
+                          placeholder="Nhập mã khách hàng"
+                          class="w-full rounded border p-2"
+                        />
+                      </div>
+
+                      <div>
+                        <label for="loaiKhachHang">Loại khách hàng:</label>
+                        <select
+                          id="loaiKhachHang"
+                          class="w-full rounded border p-2"
+                        >
+                          <option value="nhadan">Nhà dân</option>
+                          <option value="doanhnghiep">Doanh nghiệp</option>
+                        </select>
+                      </div>
+
+                      <div id="divSoKetNoi" class="hidden">
+                        <label for="soKetNoi">Số kết nối:</label>
+                        <input
+                          id="soKetNoi"
+                          type="number"
+                          min="1"
+                          step="1"
+                          value="10"
+                          placeholder="Nhập số kết nối"
+                          class="w-full rounded border p-2"
+                        />
+                      </div>
+
+                      <div>
+                        <label for="soKenhCaoCap">Số kênh cao cấp:</label>
+                        <input
+                          id="soKenhCaoCap"
+                          type="number"
+                          min="0"
+                          step="1"
+                          value="0"
+                          placeholder="Nhập số kênh"
+                          class="w-full rounded border p-2"
+                        />
+                      </div>
+                    </div>
+
+                    <div
+                      class="mt-6 flex flex-wrap items-center justify-between gap-4 border-t border-gray-100 pt-5 dark:border-gray-800"
+                    >
+                      <div>
+                        <span>Kết quả:</span>
+                        <p
+                          id="resultTienCap"
+                          class="mt-2 rounded p-3 font-semibold"
+                        ></p>
+                      </div>
+
+                      <button
+                        type="button"
+                        id="btnTinhTienCap"
+                        class="rounded-xl bg-blue-600 px-5 py-2.5 text-sm font-semibold text-white hover:bg-blue-700"
+                      >
+                        Tính tiền cáp
+                      </button>
+                    </div>
+                  </div>
+                </section>
+              </div>
+            </main>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Flowbite -->
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
+
+    <!-- DOM JS -->
+    <script src="/dom.js"></script>
+  </body>
+</html>
